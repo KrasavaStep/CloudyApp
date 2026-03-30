@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.dropbox"
+    namespace = "com.example.infrastructure"
     compileSdk {
         version = release(36)
     }
@@ -33,10 +33,7 @@ android {
 dependencies {
     implementation(project(":core"))
 
-    //dropbox
-    implementation(libs.dropbox.core.sdk)
-    implementation(libs.dropbox.android.sdk)
-
+    implementation(libs.androidx.security.crypto)
     implementation(libs.gson)
 
     implementation(libs.androidx.core.ktx)

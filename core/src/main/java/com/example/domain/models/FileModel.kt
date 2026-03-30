@@ -1,5 +1,5 @@
 package com.example.domain.models
 
-data class RemoteStorageModel(
+data class FileModel(
     val field: String
 )

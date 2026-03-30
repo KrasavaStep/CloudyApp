@@ -15,7 +15,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import com.dropbox.core.android.Auth
 import com.example.cloudyapp.ui.theme.CloudyAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -36,15 +35,15 @@ class MainActivity : ComponentActivity() {
 
     override fun onResume() {
         super.onResume()
-        val credential = Auth.getDbxCredential()
-        if (credential != null) {
+        //val credential = Auth.getDbxCredential()
+       // if (credential != null) {
             // credential содержит: accessToken, refreshToken, expiresAt и т.д.
             // ВАЖНО: Сохраните эти данные (например, в EncryptedSharedPreferences)
             //saveDropboxCredential(credential)
 
             // Инициализируем клиент
             //initDropboxClient(credential)
-        }
+        //}
     }
 
 }
@@ -74,7 +73,7 @@ fun GreetingPreview() {
 }
 
 private fun startDropboxAuth(context: Context) {
-    Auth.startOAuth2Authentication(context, BuildConfig.DROPBOX_APP_KEY)
+    //Auth.startOAuth2Authentication(context, BuildConfig.DROPBOX_APP_KEY)
 }
 
 //private fun saveDropboxCredential(credential: DbxCredential) {

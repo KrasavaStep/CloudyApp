@@ -73,8 +73,4 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-
-    //dropbox
-    implementation(libs.dropbox.core.sdk)
-    implementation(libs.dropbox.android.sdk)
 }
