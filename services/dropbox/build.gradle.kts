@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.data"
+    namespace = "com.example.dropbox"
     compileSdk {
         version = release(36)
     }
@@ -31,7 +31,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":domain"))
+    implementation(project(":core"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

@@ -54,8 +54,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":domain"))
-    implementation(project(":data"))
+    implementation(project(":core"))
+    implementation(project(":presentation"))
+    implementation(project(":services:dropbox"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

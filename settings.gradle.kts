@@ -21,5 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "CloudyApp"
 include(":app")
-include(":domain")
-include(":data")
+include(":core")
+include(":presentation")
+include(":services:dropbox")

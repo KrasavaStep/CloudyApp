@@ -40,10 +40,10 @@ class MainActivity : ComponentActivity() {
         if (credential != null) {
             // credential содержит: accessToken, refreshToken, expiresAt и т.д.
             // ВАЖНО: Сохраните эти данные (например, в EncryptedSharedPreferences)
-            saveDropboxCredential(credential)
+            //saveDropboxCredential(credential)
 
             // Инициализируем клиент
-            initDropboxClient(credential)
+            //initDropboxClient(credential)
         }
     }
 
@@ -77,24 +77,24 @@ private fun startDropboxAuth(context: Context) {
     Auth.startOAuth2Authentication(context, BuildConfig.DROPBOX_APP_KEY)
 }
 
-private fun saveDropboxCredential(credential: DbxCredential) {
-    val prefs = getSharedPreferences("dropbox_prefs", MODE_PRIVATE)
-    // Сериализуем объект в JSON (SDK умеет это из коробки)
-    val json = DbxCredential.Writer.writeToString(credential)
-    prefs.edit().putString("credential_json", json).apply()
-}
-
-private fun loadDropboxCredential(): DbxCredential? {
-    val prefs = getSharedPreferences("dropbox_prefs", MODE_PRIVATE)
-    val json = prefs.getString("credential_json", null) ?: return null
-    // Десериализуем обратно
-    return DbxCredential.Reader.readField(json)
-}
-
-private fun initDropboxClient(credential: DbxCredential): DbxClientV2 {
-    val config = DbxRequestConfig.newBuilder("my-cool-app").build()
-
-    // Создаем клиент, передавая весь объект credential
-    // Теперь при каждом вызове API SDK проверит, не протух ли токен
-    return DbxClientV2(config, credential)
-}
+//private fun saveDropboxCredential(credential: DbxCredential) {
+//    val prefs = getSharedPreferences("dropbox_prefs", MODE_PRIVATE)
+//    // Сериализуем объект в JSON (SDK умеет это из коробки)
+//    val json = DbxCredential.Writer.writeToString(credential)
+//    prefs.edit().putString("credential_json", json).apply()
+//}
+//
+//private fun loadDropboxCredential(): DbxCredential? {
+//    val prefs = getSharedPreferences("dropbox_prefs", MODE_PRIVATE)
+//    val json = prefs.getString("credential_json", null) ?: return null
+//    // Десериализуем обратно
+//    return DbxCredential.Reader.readField(json)
+//}
+//
+//private fun initDropboxClient(credential: DbxCredential): DbxClientV2 {
+//    val config = DbxRequestConfig.newBuilder("my-cool-app").build()
+//
+//    // Создаем клиент, передавая весь объект credential
+//    // Теперь при каждом вызове API SDK проверит, не протух ли токен
+//    return DbxClientV2(config, credential)
+//}
