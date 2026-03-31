@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.infrastructure"
+    namespace = "com.example.common"
     compileSdk {
         version = release(36)
     }
@@ -31,6 +31,7 @@ android {
 }
 
 dependencies {
+
     implementation(project(":core"))
 
     implementation(libs.androidx.security.crypto)

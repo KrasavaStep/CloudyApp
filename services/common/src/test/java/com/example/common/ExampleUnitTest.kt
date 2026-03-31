@@ -1,4 +1,4 @@
-package com.example.infrastructure
+package com.example.common
 
 import org.junit.Test
 

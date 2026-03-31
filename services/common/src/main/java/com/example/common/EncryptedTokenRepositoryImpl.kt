@@ -1,4 +1,4 @@
-package com.example.infrastructure
+package com.example.common
 
 import android.content.Context
 import androidx.security.crypto.EncryptedSharedPreferences
@@ -9,7 +9,7 @@ import androidx.core.content.edit
 import com.google.gson.Gson
 
 
-class EncryptedTokenStorage(context: Context): ITokenRepository {
+class EncryptedTokenRepositoryImpl(context: Context): ITokenRepository {
 
     private val masterKey = MasterKey.Builder(context)
         .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
@@ -33,6 +33,6 @@ class EncryptedTokenStorage(context: Context): ITokenRepository {
     }
 
     override fun clearToken() {
-        sharedPreferences.edit { remove("auth_token") }
+        //TODO
     }
 }
