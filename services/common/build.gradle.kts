@@ -1,5 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
+    id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -36,6 +38,10 @@ dependencies {
 
     implementation(libs.androidx.security.crypto)
     implementation(libs.gson)
+
+    //hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

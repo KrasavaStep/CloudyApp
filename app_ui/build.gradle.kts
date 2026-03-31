@@ -1,19 +1,12 @@
+
 import java.util.Properties
 
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
 }
-
-// 1. Читаем свойства из файла
-val localProperties = Properties().apply {
-    val localPropertiesFile = rootProject.file("local.properties")
-    if (localPropertiesFile.exists()) {
-        load(localPropertiesFile.inputStream())
-    }
-}
-
-val dropboxKey: String = localProperties.getProperty("dropboxAppKey") ?: ""
 
 android {
     namespace = "com.example.cloudyapp"
@@ -29,6 +22,15 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        val localProperties = Properties().apply {
+            val localPropertiesFile = rootProject.file("local.properties")
+            if (localPropertiesFile.exists()) {
+                load(localPropertiesFile.inputStream())
+            }
+        }
+
+        val dropboxKey: String = localProperties.getProperty("dropboxAppKey") ?: ""
 
         manifestPlaceholders["DROPBOX_APP_KEY"] = dropboxKey
         buildConfigField("String", "DROPBOX_APP_KEY", "\"$dropboxKey\"")
@@ -55,8 +57,6 @@ android {
 
 dependencies {
     implementation(project(":core"))
-    implementation(project(":presentation"))
-    implementation(project(":services:dropbox"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -73,4 +73,14 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    //dropbox
+    implementation(libs.dropbox.core.sdk)
+    implementation(libs.dropbox.android.sdk)
+
+    //hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.hilt.navigation.compose)
 }

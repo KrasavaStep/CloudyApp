@@ -4,7 +4,7 @@ import com.example.domain.models.FileModel
 
 interface IFilesRepository {
 
-    suspend fun getFiles(): FileModel?
+    suspend fun getFiles(): List<FileModel>?
     suspend fun saveFile(file: FileModel)
 
 }

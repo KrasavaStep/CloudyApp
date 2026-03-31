@@ -7,9 +7,10 @@ import com.example.domain.models.TokenModel
 import com.example.domain.repositories.ITokenRepository
 import androidx.core.content.edit
 import com.google.gson.Gson
+import javax.inject.Inject
 
 
-class EncryptedTokenRepositoryImpl(context: Context): ITokenRepository {
+class EncryptedTokenRepositoryImpl @Inject constructor(context: Context): ITokenRepository {
 
     private val masterKey = MasterKey.Builder(context)
         .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)

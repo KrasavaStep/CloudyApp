@@ -1,9 +1,11 @@
 plugins {
     alias(libs.plugins.android.library)
+    id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
-    namespace = "com.example.presentation"
+    namespace = "com.example.application"
     compileSdk {
         version = release(36)
     }
@@ -32,6 +34,10 @@ android {
 
 dependencies {
     implementation(project(":core"))
+    implementation(project(":app_ui"))
+    implementation(project(":services:dropbox"))
+    implementation(project(":services:common"))
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -39,4 +45,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    //hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
 }
